@@ -10,8 +10,6 @@ from shutil import get_terminal_size
 from threading import Thread
 from time import sleep
 import pygame 
-<<<<<<< Updated upstream
-=======
 import subprocess
 
 
@@ -246,7 +244,6 @@ def spidy_lens():
                 else:  # Invalid input defaults to skip
                     type_writer("Invalid option, skipping...", Fore.CYAN)
                 sys.stdout.write("\r\n")
->>>>>>> Stashed changes
         else:
             type_writer(f"No results found for '{query}' with extension '{file_ext}'.", Fore.RED)
 
