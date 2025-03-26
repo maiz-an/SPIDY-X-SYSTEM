@@ -10,7 +10,10 @@ from queue import Queue
 from colorama import Fore
 from queue import Queue
 from threading import Lock
-
+import psutil  
+import threading
+import random
+from colorama import Fore
 import subprocess
 
 def resource_path(relative_path):
@@ -99,6 +102,52 @@ def print_spidy_art():
 
     # Print the shorter horizontal border at the bottom
     print(horizontal_border)
+
+
+def get_network_speed():
+    """Measure network speed using speedtest-cli, with psutil as fallback."""
+    try:
+        import speedtest  # Requires 'pip install speedtest-cli'
+        type_writer("Measuring SPIDY Server Speed... (10-20 seconds)", Fore.MAGENTA, delay=0.01)
+        st = speedtest.Speedtest()
+        st.get_best_server()  # Find the best server for accurate results
+        download_speed = st.download() / 1_000_000  # Convert bits/sec to Mbps
+        upload_speed = st.upload() / 1_000_000  # Convert bits/sec to Mbps
+        unit = "Mbps"
+        return download_speed, upload_speed, unit
+    except ImportError:
+        type_writer("⚠️ Speedtest module not found, falling back to usage monitoring (install with 'pip install speedtest-cli')", Fore.RED)
+        net_io_start = psutil.net_io_counters()
+        start_bytes_sent = net_io_start.bytes_sent
+        start_bytes_recv = net_io_start.bytes_recv
+        
+        type_writer("Measuring current usage... (5 seconds)", Fore.YELLOW, delay=0.01)
+        time.sleep(5)
+        
+        net_io_end = psutil.net_io_counters()
+        end_bytes_sent = net_io_end.bytes_sent
+        end_bytes_recv = net_io_end.bytes_recv
+        
+        upload_bytes = end_bytes_sent - start_bytes_sent
+        download_bytes = end_bytes_recv - start_bytes_recv
+        
+        upload_bits_per_sec = (upload_bytes * 8) / 5
+        download_bits_per_sec = (download_bytes * 8) / 5
+        
+        if download_bits_per_sec >= 1_000_000:
+            download_speed = download_bits_per_sec / 1_000_000
+            upload_speed = upload_bits_per_sec / 1_000_000
+            unit = "Mbps"
+        else:
+            download_speed = download_bits_per_sec / 1_000
+            upload_speed = upload_bits_per_sec / 1_000
+            unit = "kbps"
+        
+        return download_speed, upload_speed, unit
+    except Exception as e:
+        type_writer(f"⚠️ Network Error: {e}. Check your connection or firewall.", Fore.RED)
+        return 0, 0, "Mbps"
+
 
 # High-end Linux-style loader animation with progress bar and unique colors
 def linux_loader_animation():
@@ -204,9 +253,7 @@ def play_sound(sound):
         print(f"Error playing sound: {e}")
         
 
-import threading
-import random
-from colorama import Fore
+
 
 # Function to play the sound (Make sure 'dady_home' is a valid path to a sound file)
 def play_daddy_home_sound():
@@ -353,16 +400,29 @@ def play_middle_sound():
 
 # Run both the sound and type_writer concurrently
 thread1 = threading.Thread(target=play_middle_sound)
+<<<<<<< Updated upstream
 thread2 = threading.Thread(target=type_writer, args=("[🤝] Connecting to ~SPIDY Private Server...", Fore.MAGENTA))
 
 # Start both threads
+=======
+thread2 = threading.Thread(target=type_writer, args=("Connecting to ~SPIDY Private Server...", Fore.MAGENTA))
+>>>>>>> Stashed changes
 thread1.start()
 thread2.start()
-
-# Wait for both threads to finish
 thread1.join()
 thread2.join()
+<<<<<<< Updated upstream
 type_writer("✅ SPIDY SYSTEM ACTIVATED..!", Fore.GREEN)
+=======
+
+# Add network speed display here with the debug-enabled function
+download_speed, upload_speed, unit = get_network_speed()
+type_writer(f"SPIDINAL Speed - Download: {download_speed:.2f} {unit} | Upload: {upload_speed:.2f} {unit} 🌐", Fore.CYAN)
+
+type_writer("SPIDY SYSTEM ACTIVATED..!", Fore.GREEN)
+
+
+>>>>>>> Stashed changes
 # Function to play the exit sound and print the exit message
 def exit_sequence():
     # Thread to play the exit sound
@@ -377,6 +437,8 @@ def exit_sequence():
     # Wait for both threads to finish
     thread1.join()
     thread2.join()
+    
+    
 
 # Play the intro sound in a separate thread
 # thread = threading.Thread(target=play_sound, args=(middle,))
@@ -450,6 +512,24 @@ while True:
     elif command.lower() == "exit":
         exit_sequence()
         break  # Exit the loop after the exit sequence is completed
+    
+    elif command.lower() == "spidynal speed":
+        download_speed, upload_speed, unit = get_network_speed()
+        box_width = 50
+        speed_text = f"Download: {download_speed:.2f} {unit} | Upload: {upload_speed:.2f} {unit}"
+        padding = (box_width - len(speed_text) - 4) // 2
+        
+        # Top border
+        top_border = colored("╔" + "═" * (box_width - 2) + "╗", "cyan")
+        type_writer(top_border, delay=0.01)
+        
+        # Content line
+        content = colored("║", "cyan") + " " * padding + speed_text + " " * (box_width - len(speed_text) - 2 - padding) + colored("║", "cyan")
+        type_writer(f"🌐 Network Speed - {content}", delay=0.01)
+        
+        # Bottom border (fixed typo)
+        bottom_border = colored("╚" + "═" * (box_width - 2) + "╝", "cyan")
+        type_writer(bottom_border, delay=0.01)  # Note: Should be bottom_border, not custom_border
     
     elif command.lower() == "fuck":
             type_writer("what's fuck huh?", Fore.GREEN)

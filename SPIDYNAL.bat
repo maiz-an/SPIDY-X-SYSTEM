@@ -93,6 +93,30 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 del errorlog.txt 2>nul
 
+:: Install psutil
+pip install psutil 2>errorlog.txt
+IF %ERRORLEVEL% NEQ 0 (
+    set /p ERRORMSG=<errorlog.txt
+    echo Failed to install psutil due to: !ERRORMSG!
+    :psutil_retry_prompt
+    set "CHOICE="
+    set /p CHOICE="Retry installing psutil? (y/n): "
+    if /i "!CHOICE!"=="y" (
+        pip install psutil 2>errorlog.txt
+        IF !ERRORLEVEL! NEQ 0 (
+            set /p ERRORMSG=<errorlog.txt
+            echo Failed again due to: !ERRORMSG!
+            goto psutil_retry_prompt
+        )
+    ) else if /i "!CHOICE!"=="n" (
+        echo Skipping psutil installation...
+    ) else (
+        echo Invalid input. Please enter 'y' or 'n'.
+        goto psutil_retry_prompt
+    )
+)
+del errorlog.txt 2>nul
+
 :: Install pygame
 pip install pygame 2>errorlog.txt
 IF %ERRORLEVEL% NEQ 0 (
@@ -165,7 +189,35 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 del errorlog.txt 2>nul
 
+<<<<<<< Updated upstream:SPIDYNAL.bat
 :: Close the current CMD window and open a new one in maximized mode
+=======
+:: Install speedtest-cli
+pip install speedtest-cli 2>errorlog.txt
+IF %ERRORLEVEL% NEQ 0 (
+    set /p ERRORMSG=<errorlog.txt
+    echo Failed to install speedtest-cli due to: !ERRORMSG!
+    :speedtest_retry_prompt
+    set "CHOICE="
+    set /p CHOICE="Retry installing speedtest-cli? (y/n): "
+    if /i "!CHOICE!"=="y" (
+        pip install speedtest-cli 2>errorlog.txt
+        IF !ERRORLEVEL! NEQ 0 (
+            set /p ERRORMSG=<errorlog.txt
+            echo Failed again due to: !ERRORMSG!
+            goto speedtest_retry_prompt
+        )
+    ) else if /i "!CHOICE!"=="n" (
+        echo Skipping speedtest-cli installation...
+    ) else (
+        echo Invalid input. Please enter 'y' or 'n'.
+        goto speedtest_retry_prompt
+    )
+)
+del errorlog.txt 2>nul
+
+:: Launch spidy.py in Windows Terminal maximized
+>>>>>>> Stashed changes:build/spidy/mound/spidy.bat
 echo Starting SPIDYNAL...
 start /max cmd /k "python build/spidy/mound/spidy.py"
 exit
