@@ -5,7 +5,7 @@ Welcome to **SPIDYNAL SYSTEM™** - your friendly neighborhood intelligent searc
 ## Description
 SPIDYNAL SYSTEM™ is an advanced file search assistant that can search files and folders across your system using multithreading and unique animations. It is designed to provide quick search results while delivering a stylish, hacker-themed experience with sound effects and custom branding.
 
-**Version: 1.3.0.4**
+**Version: 1.3.0.2**
 
 ### Features:
 - Interactive Search System
