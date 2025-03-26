@@ -402,9 +402,13 @@ def play_middle_sound():
 thread1 = threading.Thread(target=play_middle_sound)
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 thread2 = threading.Thread(target=type_writer, args=("[🤝] Connecting to ~SPIDY Private Server...", Fore.MAGENTA))
 
 # Start both threads
+=======
+thread2 = threading.Thread(target=type_writer, args=("Connecting to ~SPIDY Private Server...", Fore.MAGENTA))
+>>>>>>> Stashed changes
 =======
 thread2 = threading.Thread(target=type_writer, args=("Connecting to ~SPIDY Private Server...", Fore.MAGENTA))
 >>>>>>> Stashed changes
@@ -417,8 +421,11 @@ thread1.join()
 thread2.join()
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 type_writer("✅ SPIDY SYSTEM ACTIVATED..!", Fore.GREEN)
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -430,6 +437,9 @@ type_writer("SPIDY SYSTEM ACTIVATED..!", Fore.GREEN)
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

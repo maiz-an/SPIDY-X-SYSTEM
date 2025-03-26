@@ -191,8 +191,11 @@ del errorlog.txt 2>nul
 
 <<<<<<< Updated upstream:SPIDYNAL.bat
 <<<<<<< Updated upstream:SPIDYNAL.bat
+<<<<<<< Updated upstream:SPIDYNAL.bat
 :: Close the current CMD window and open a new one in maximized mode
 =======
+=======
+>>>>>>> Stashed changes:build/spidy/mound/spidy.bat
 =======
 >>>>>>> Stashed changes:build/spidy/mound/spidy.bat
 :: Install speedtest-cli

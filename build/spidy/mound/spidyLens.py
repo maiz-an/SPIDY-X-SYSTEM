@@ -15,6 +15,9 @@ import pygame
 import subprocess
 import psutil  # Add this to your imports
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -161,6 +164,7 @@ def spidy_lens():
     while True:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         file_ext = input(f"{Fore.CYAN}Enter the file extension 🕷️: {Fore.RESET}")
         if file_ext.lower() == "close lens":
             type_writer("Closing SPIDY LENS...", Fore.RED)
@@ -199,6 +203,20 @@ def spidy_lens():
             sys.stdout.write("\r\n")
 
 >>>>>>> Stashed changes
+=======
+        # Input validation for file extension
+        while True:
+            file_ext = input(f"{Fore.CYAN}  🕷️ Enter the file extension : {Fore.RESET}").strip()
+            if file_ext.lower() == "close lens":
+                sys.stdout.write("\r\n")
+                type_writer("  Closing SPIDY LENS...", Fore.RED)
+                return
+            if file_ext:
+                break
+            type_writer("Please enter a valid file extension!", Fore.RED)
+            sys.stdout.write("\r\n")
+
+>>>>>>> Stashed changes
         # Input validation for file name/keyword
         while True:
             query = input(f"{Fore.CYAN}  🕷️ Enter the file name or keyword : {Fore.RESET}").strip()
@@ -212,6 +230,9 @@ def spidy_lens():
 
         type_writer(f"  Searching for '{query}' files with extension '{file_ext}'... ", Fore.YELLOW)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -224,10 +245,13 @@ def spidy_lens():
             
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             type_writer(f"Found {len(found_items)} results:", Fore.GREEN)
             for item in found_items:
                 print(item)
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             type_writer(f"  Found {len(found_items)} results 🕷️:", Fore.GREEN)
@@ -309,7 +333,10 @@ def spidy_lens():
             type_writer(f"No results found for '{query}' with extension '{file_ext}'.", Fore.RED)
             sys.stdout.write("\r\n")
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
