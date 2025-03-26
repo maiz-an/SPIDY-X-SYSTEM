@@ -401,9 +401,13 @@ def play_middle_sound():
 # Run both the sound and type_writer concurrently
 thread1 = threading.Thread(target=play_middle_sound)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 thread2 = threading.Thread(target=type_writer, args=("[🤝] Connecting to ~SPIDY Private Server...", Fore.MAGENTA))
 
 # Start both threads
+=======
+thread2 = threading.Thread(target=type_writer, args=("Connecting to ~SPIDY Private Server...", Fore.MAGENTA))
+>>>>>>> Stashed changes
 =======
 thread2 = threading.Thread(target=type_writer, args=("Connecting to ~SPIDY Private Server...", Fore.MAGENTA))
 >>>>>>> Stashed changes
@@ -412,8 +416,11 @@ thread2.start()
 thread1.join()
 thread2.join()
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 type_writer("✅ SPIDY SYSTEM ACTIVATED..!", Fore.GREEN)
 =======
+=======
+>>>>>>> Stashed changes
 
 # Add network speed display here with the debug-enabled function
 download_speed, upload_speed, unit = get_network_speed()
@@ -422,6 +429,9 @@ type_writer(f"SPIDINAL Speed - Download: {download_speed:.2f} {unit} | Upload: {
 type_writer("SPIDY SYSTEM ACTIVATED..!", Fore.GREEN)
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 # Function to play the exit sound and print the exit message
 def exit_sequence():

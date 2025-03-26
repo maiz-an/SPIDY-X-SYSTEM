@@ -14,6 +14,9 @@ import pygame
 =======
 import subprocess
 import psutil  # Add this to your imports
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
@@ -157,6 +160,7 @@ def spidy_lens():
 
     while True:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         file_ext = input(f"{Fore.CYAN}Enter the file extension 🕷️: {Fore.RESET}")
         if file_ext.lower() == "close lens":
             type_writer("Closing SPIDY LENS...", Fore.RED)
@@ -181,6 +185,20 @@ def spidy_lens():
             type_writer("Please enter a valid file extension!", Fore.RED)
             sys.stdout.write("\r\n")
 
+=======
+        # Input validation for file extension
+        while True:
+            file_ext = input(f"{Fore.CYAN}  🕷️ Enter the file extension : {Fore.RESET}").strip()
+            if file_ext.lower() == "close lens":
+                sys.stdout.write("\r\n")
+                type_writer("  Closing SPIDY LENS...", Fore.RED)
+                return
+            if file_ext:
+                break
+            type_writer("Please enter a valid file extension!", Fore.RED)
+            sys.stdout.write("\r\n")
+
+>>>>>>> Stashed changes
         # Input validation for file name/keyword
         while True:
             query = input(f"{Fore.CYAN}  🕷️ Enter the file name or keyword : {Fore.RESET}").strip()
@@ -193,6 +211,9 @@ def spidy_lens():
             sys.stdout.write("\r\n")
 
         type_writer(f"  Searching for '{query}' files with extension '{file_ext}'... ", Fore.YELLOW)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         found_items = spidy_lens_search(query, [file_ext])
 
@@ -202,10 +223,13 @@ def spidy_lens():
             thread1.start()
             
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             type_writer(f"Found {len(found_items)} results:", Fore.GREEN)
             for item in found_items:
                 print(item)
 =======
+=======
+>>>>>>> Stashed changes
             type_writer(f"  Found {len(found_items)} results 🕷️:", Fore.GREEN)
             for idx, item in enumerate(found_items, 1):
                 print(f"  {idx}. {item}")  # Indent results for alignment
@@ -284,7 +308,10 @@ def spidy_lens():
         else:
             type_writer(f"No results found for '{query}' with extension '{file_ext}'.", Fore.RED)
             sys.stdout.write("\r\n")
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 # Initialize colorama
 init()
